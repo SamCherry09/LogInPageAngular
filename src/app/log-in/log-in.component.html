@@ -7,15 +7,15 @@
         <section>
             <section class="Inputcube">
                 <h3>E-Mail:</h3>
-                <input id="EnteredEmail" type="text">
+                <input [(ngModel)]= "enteredEmail"id="enteredEmail" type="text">
             </section>
             <section class="Inputcube">
                 <h3>Passwort:</h3>
-                <input id="EnteredPassword" type="text">
+                <input [(ngModel)]= "enteredPassword" id="enteredPassword" type="text">
             </section>
         </section>
         <nav class="center">
-            <button onclick="LogIn()">LogIn</button>
+            <button (click)="logIn()">LogIn</button>
         </nav>
         <aside class="center errorMessage hidden" id="ErrorMessage">
             <h3>Login ungültig</h3>
