@@ -1,0 +1,13 @@
+.center{
+    text-align: center;
+}
+.hidden{
+    display: none;
+}
+.PersonInformation{
+    display: flex;
+    justify-content: center;
+    column-gap: 10px;
+    align-items: center;
+}
+
