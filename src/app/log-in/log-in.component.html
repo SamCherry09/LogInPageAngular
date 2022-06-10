@@ -17,7 +17,7 @@
         <nav class="center">
             <button (click)="logIn()">LogIn</button>
         </nav>
-        <aside class="center errorMessage hidden" id="ErrorMessage">
+        <aside *ngIf="hasError" #errorMessage class="center errorMessage " id="errorMessage" >
             <h3>Login ungültig</h3>
         </aside>
     </section>
