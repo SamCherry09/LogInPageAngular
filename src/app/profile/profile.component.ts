@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../user.service';
+import { Observable ,Subscription} from 'rxjs';
+import { User } from '../user';
 
 @Component({
   selector: 'app-profile',
@@ -10,6 +12,7 @@ import { UserService } from '../user.service';
 export class ProfileComponent implements OnInit {
   emailfieled: string= "Missing Email";
   namefieled: string= "Missing Name";
+  user?: Observable<User>;
   constructor(private route: ActivatedRoute,private userservice: UserService ) { }
 
   ngOnInit(): void {
@@ -17,12 +20,13 @@ export class ProfileComponent implements OnInit {
   }
   getUser():void{
     const index = Number(this.route.snapshot.paramMap.get('index'));
-    const user = this.userservice.getUser(index);
-    this.emailfieled = user.email;
-    this.namefieled = user.name +" " +user.famName;
+    this.user = this.userservice.getUser(index);
+    // this.emailfieled = user.email;
+    // this.namefieled = user.name +" " +user.famName;
   }
   logOut(){
     window.location.replace("../LogIn");
   }
+
 
 }
