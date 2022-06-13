@@ -17,12 +17,10 @@ export class LogInComponent implements OnInit , AfterViewInit, OnDestroy{
   constructor(private userService: UserService) { }
   user?: User;
   private subscriptions: Subscription[] = [];
+  users: User[] = [];
 
   ngOnInit(): void {
-    let x = 5;
-    let y = x;
-    x = 7;
-    console.log(x, y);
+    this.subscriptions.push(this.userService.getUsers().subscribe(users => this.users = users));
   }
   ngAfterViewInit(): void{
     console.log(this.errorMessageElement);
@@ -32,11 +30,11 @@ export class LogInComponent implements OnInit , AfterViewInit, OnDestroy{
     // this.errorMessageElement.nativeElement.classList.remove("hidden");
     
     if (this.enteredEmail != null && this.enteredPassword != null) {
-      for (let i = 0; i < this.userService.geAmountOfUsers(); i++) {
-         this.subscriptions.push(this.userService.getUser(i).subscribe(User => this.user = User));
-        if (this.enteredEmail == this.user?.email && this.enteredPassword == this.user?.password) {
+      for (const user of this.users) {//For-of-loop over this.users
+         
+        if (this.enteredEmail == user.email && this.enteredPassword == user.password) {
           // this.errorMessageElement?.nativeElement.classList.add("hidden");
-          window.location.replace("../profile/" + i);
+          window.location.replace("../profile/" +user.iD);
           return;
         }
         

@@ -12,7 +12,7 @@ import { User } from '../user';
 export class ProfileComponent implements OnInit {
   emailfieled: string= "Missing Email";
   namefieled: string= "Missing Name";
-  user?: Observable<User>;
+  user$?: Observable<User>;
   constructor(private route: ActivatedRoute,private userservice: UserService ) { }
 
   ngOnInit(): void {
@@ -20,7 +20,7 @@ export class ProfileComponent implements OnInit {
   }
   getUser():void{
     const index = Number(this.route.snapshot.paramMap.get('index'));
-    this.user = this.userservice.getUser(index);
+    this.user$ = this.userservice.getUser(index);
     // this.emailfieled = user.email;
     // this.namefieled = user.name +" " +user.famName;
   }

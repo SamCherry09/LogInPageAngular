@@ -1,13 +1,13 @@
 <main class="center" id="Profile" >
     <h1>Profile: </h1>
-    <section class="pullTogether">
+    <section class="pullTogether" *ngIf="(user$ | async) as user">
         <section class="PersonInformation">
             <h3 >Name:</h3>
-            <h2 id="namefield">{{(user | async)?.name +" "+(user | async)?.famName}}</h2>
+            <h2 id="namefield">{{user.name +" "+user.famName}}</h2>
         </section>
         <section class="PersonInformation">
             <h3 >Email:</h3>
-            <h2 id="emailfield">{{(user | async)?.email}}</h2>
+            <h2 id="emailfield">{{user.email}}</h2>
         </section>
         <section class="PersonInformation">
             <button (click)="logOut()">LogOut</button>

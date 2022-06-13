@@ -12,6 +12,8 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    /* background-color: rgb(255, 255, 255); */
+    color: rgb(0,43,62);
 }
 .hidden{
     display: none;
@@ -24,4 +26,9 @@
     justify-content: space-between;
     column-gap: 10px;
     align-items: center;
+    /* background-color: rgb(0,43,62);;
+    color: rgb(255, 255, 255);
+    border-radius: 5px; */
 }
+
+

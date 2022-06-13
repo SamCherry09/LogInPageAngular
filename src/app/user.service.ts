@@ -7,8 +7,18 @@ import{Observable, of} from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
-  getUser(index: number): Observable<User>{
-    return of(USERS[index]);
+  user?: User;
+  getUser(iD: number): Observable<User>{
+    this.user = USERS.find(u => u.iD === iD.toString());
+    if(this.user){
+      return of(this.user) ;
+    }
+    else{
+      return of(USERS[0]);
+    }
+  }
+  getUsers(): Observable<User[]>{
+    return of(USERS);
   }
   geAmountOfUsers(): number{
     return USERS.length;
