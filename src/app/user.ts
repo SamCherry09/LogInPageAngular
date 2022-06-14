@@ -3,5 +3,5 @@ export interface User {
     password: string;
     name: string;
     famName: string;
-    iD: string;
+    id: string;
 }

@@ -34,7 +34,7 @@ export class LogInComponent implements OnInit , AfterViewInit, OnDestroy{
          
         if (this.enteredEmail == user.email && this.enteredPassword == user.password) {
           // this.errorMessageElement?.nativeElement.classList.add("hidden");
-          window.location.replace("../profile/" +user.iD);
+          window.location.replace("../profile/" + user.id);
           return;
         }
         
