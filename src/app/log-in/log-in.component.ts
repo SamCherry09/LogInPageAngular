@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
-import { User } from '../user';
+import { User } from '../models/user';
 import { UserService } from '../user.service';
 import { HttpClient } from '@angular/common/http';
 import { WindowService } from '../window.service';

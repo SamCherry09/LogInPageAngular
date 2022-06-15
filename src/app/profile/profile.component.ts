@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../user.service';
 import { Observable ,Subscription} from 'rxjs';
-import { User } from '../user';
+import { User } from '../models/user';
 import { WindowService } from '../window.service';
 
 @Component({

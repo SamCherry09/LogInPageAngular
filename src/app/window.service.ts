@@ -7,10 +7,10 @@ export class WindowService {
 
   constructor() { }
 
-  goToLogInPage(){
+  public goToLogInPage(){
     window.location.replace("../LogIn");
   }
-  goToProfilePage(id: string){
+  public goToProfilePage(id: string){
     window.location.replace("../profile/" + id);
   }
 }

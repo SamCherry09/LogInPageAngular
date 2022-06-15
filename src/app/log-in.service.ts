@@ -7,12 +7,11 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class LogInService {
-  id:string = ""
   constructor(private http: HttpClient) { }
-  logIn(enteredEmail: string,enteredPassword: string): Observable<string>{
-    return this.http.post<UserDTO>("http://localhost:4000/LogIn", {"email":enteredEmail,"password":enteredPassword}).pipe(map(userDTO => {
+  logIn(email: string, password: string): Observable<string> {
+    return this.http.post<UserDTO>("http://localhost:4000/LogIn", { email, password }).pipe(map(userDTO => {
       return userDTO.id
     }))
-    
+
   }
 }
