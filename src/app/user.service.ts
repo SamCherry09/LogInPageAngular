@@ -15,7 +15,7 @@ export class UserService {
   //   return this.http.get<User[]>(this.testUrl);
   // }
   getUser(id: number): Observable<User> | undefined {
-    return this.http.get<User>("http://localhost:4000/user", { params: { id: id.toString() } })
+    return this.http.get<User>("https://profile-example-app-sc.herokuapp.com/user", { params: { id: id.toString() } })
   }
   // getUsers(): Observable<User[]>{FGF
   //   return this.http.get<User[]>(this.userUrl);
