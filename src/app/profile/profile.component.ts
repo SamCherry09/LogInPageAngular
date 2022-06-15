@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../user.service';
 import { Observable ,Subscription} from 'rxjs';
 import { User } from '../user';
+import { WindowService } from '../window.service';
 
 @Component({
   selector: 'app-profile',
@@ -13,7 +14,7 @@ export class ProfileComponent implements OnInit {
   emailfieled: string= "Missing Email";
   namefieled: string= "Missing Name";
   user$?: Observable<User>;
-  constructor(private route: ActivatedRoute,private userservice: UserService ) { }
+  constructor(private route: ActivatedRoute,private userservice: UserService, private side: WindowService) { }
 
   ngOnInit(): void {
     this.getUser();
@@ -25,7 +26,7 @@ export class ProfileComponent implements OnInit {
     // this.namefieled = user.name +" " +user.famName;
   }
   logOut(){
-    window.location.replace("../LogIn");
+    this.side.goToLogInPage();
   }
 
 
