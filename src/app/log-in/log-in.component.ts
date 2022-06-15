@@ -3,7 +3,6 @@ import { Observable, Subscription } from 'rxjs';
 import { User } from '../user';
 import { UserService } from '../user.service';
 import { HttpClient } from '@angular/common/http';
-import { UserDTO } from '../models/user-dto.model';
 import { WindowService } from '../window.service';
 import { LogInService } from '../log-in.service';
 @Component({
@@ -26,30 +25,10 @@ export class LogInComponent implements OnInit, AfterViewInit, OnDestroy {
   id: string = "";
 
   ngOnInit(): void {
-    this.subscriptions.push(this.userService.getUsers().subscribe(users => this.users = users));
   }
   ngAfterViewInit(): void {
-    console.log(this.errorMessageElement);
   }
   logIn() {
-    console.log("Geklicked")
-    // this.errorMessageElement.nativeElement.classList.remove("hidden");
-
-    if (this.enteredEmail != null && this.enteredPassword != null) {
-      for (const user of this.users) {//For-of-loop over this.users
-
-        if (this.enteredEmail == user.email && this.enteredPassword == user.password) {
-          // this.errorMessageElement?.nativeElement.classList.add("hidden");
-          window.location.replace("../profile/" + user.id);
-          return;
-        }
-
-      }
-
-    }
-    this.hasError = true;
-  }
-  logInOnServer() {
     this.subscriptions.push(this.logInS.logIn(this.enteredEmail,this.enteredPassword).subscribe(id => {
       if (id != "") {
         this.side.goToProfilePage(id);
@@ -58,8 +37,8 @@ export class LogInComponent implements OnInit, AfterViewInit, OnDestroy {
       this.hasError = true;
     }))
     
-
   }
+
   ngOnDestroy() {
     for (const subscription of this.subscriptions) {
       subscription.unsubscribe();
