@@ -17,8 +17,14 @@ export class UserService {
   getUser(id: number): Observable<User> | undefined {
     return this.http.get<User>("https://profile-example-app-sc.herokuapp.com/user", { params: { id: id.toString() } })
   }
-  // getUsers(): Observable<User[]>{FGF
-  //   return this.http.get<User[]>(this.userUrl);
-  // }
+  deleteUser(id: number):void{
+    this.http.delete("https://profile-example-app-sc.herokuapp.com/user", { params: { id: id.toString() } })
+  }
+  createUser(email: string,password: string,name:string,famName: string){
+    this.http.put("https://profile-example-app-sc.herokuapp.com/user", { email,password,name,famName,id: "Ueberschreibbar"})
+  }
+  updateUser(email: string,password: string,name:string,famName: string,id: string){
+    this.http.post("https://profile-example-app-sc.herokuapp.com/user", { email,password,name,famName,id})
+  }
   constructor(private http: HttpClient) { }
 }
